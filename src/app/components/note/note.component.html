@@ -1,0 +1,17 @@
+<mat-card class="note">
+  <mat-card-header>
+    <mat-card-title-group>
+      <span class="note-id">{{ noteId }}</span>
+      <mat-card-title>{{ title }}</mat-card-title>
+    </mat-card-title-group>
+  </mat-card-header>
+  @if (summary !== undefined) {
+  <mat-card-content>
+    <p [ngClass]="{ 'card-summary--clamp': noteDuration < 2 }">{{ summary }}</p>
+  </mat-card-content>
+  }
+  <mat-card-footer>
+    <p>Start date: {{ startDateFormatted | date : "dd.MM" }}</p>
+    <p>Duration: {{ noteDuration }} days</p>
+  </mat-card-footer>
+</mat-card>

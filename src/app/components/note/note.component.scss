@@ -1,0 +1,103 @@
+@use "@angular/material" as mat;
+@import "../../../theme.scss";
+
+mat-card.note {
+  @include mat.elevation-transition();
+  @include mat.elevation(0);
+  border: 1px solid mat.get-theme-color($theme, accent, 500);
+
+  mat-card-header {
+    .mat-mdc-card-title-group {
+      flex-direction: row-reverse;
+      justify-content: start;
+      align-items: baseline;
+      gap: 8px;
+
+      .note-id,
+      mat-card-title {
+        font: mat.get-theme-typography($theme, body-1);
+        font-weight: bold;
+      }
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+
+  mat-card-footer {
+    p {
+      font: mat.get-theme-typography($theme, body-2);
+      color: mat.get-color-from-palette($grey, 700);
+    }
+  }
+}
+
+@media screen and (max-width: 1680px) {
+  // Display cards in minimal design
+  mat-card.note {
+    mat-card-header {
+      padding: 8px;
+      padding-bottom: 0px;
+      .note-id {
+        color: mat.get-theme-color($theme, accent, 700);
+      }
+      mat-card-title {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+      }
+    }
+
+    mat-card-content {
+      padding: 8px;
+      min-height: 40px;
+      p {
+        font: mat.get-theme-typography($theme, body-2);
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+    }
+
+    mat-card-footer {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: 1681px) {
+  mat-card.note {
+    mat-card-header {
+      padding-bottom: 16px;
+
+      .note-id {
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+        background: mat.get-theme-color($theme, accent, 500);
+        border-radius: 4px;
+        padding: 4px 8px;
+        font: mat.get-theme-typography($theme, body-1);
+      }
+    }
+
+    mat-card-content {
+      p.card-summary--clamp {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        line-clamp: 5;
+        -webkit-box-orient: vertical;
+      }
+    }
+
+    mat-card-footer {
+      padding: 16px;
+    }
+  }
+}
