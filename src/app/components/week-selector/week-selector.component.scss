@@ -1,0 +1,13 @@
+@use "@angular/material" as mat;
+@import "../../../theme.scss";
+
+.week-selector {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    font: mat.get-theme-typography($theme, headline-5);
+  }
+}

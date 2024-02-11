@@ -1,0 +1,23 @@
+<div class="week-selector">
+  <button
+    mat-icon-button
+    matTooltip="Basic"
+    aria-label="Navigate to previous week"
+    color="grey"
+    matTooltip="Previous"
+    (click)="handlePrevious()"
+  >
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  <span>{{ "Calendar week: " + currentWeek }}</span>
+  <button
+    mat-icon-button
+    matTooltip="Basic"
+    color="grey"
+    aria-label="Navigate to next week"
+    matTooltip="Next"
+    (click)="handleNext()"
+  >
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+</div>
