@@ -1,0 +1,32 @@
+<div class="timeline">
+  <div class="timeline-header">
+    <app-label-selector
+      [labels]="labels"
+      (labelSelection)="handleLabelSelection($event)"
+    ></app-label-selector>
+    <app-week-selector
+      [startDate]="firstNoteDate"
+      (weekChange)="handleWeekChange($event)"
+    ></app-week-selector>
+  </div>
+  <div class="timeline-content">
+    <div class="timeline-weekdays">
+      <span></span>
+      @for (day of weekDays; track day) {
+      <span>{{ day | date : "dd.MM.YYYY" }}</span>
+      }
+    </div>
+    <div class="timeline-categories">
+      @for (category of labels; track category) { @if(category.id ===
+      this.selectedLabel || this.selectedLabel === 0) {
+      <div class="timeline-cell timeline-cell--category">
+        <span>{{ category.text }}</span>
+      </div>
+      @for (day of weekDays; track day) {
+      <div class="timeline-cell">
+        <app-note-stack [notes]="getNotes(day, category.id)"></app-note-stack>
+      </div>
+      } } }
+    </div>
+  </div>
+</div>

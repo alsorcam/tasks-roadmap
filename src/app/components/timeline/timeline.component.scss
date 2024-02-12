@@ -1,0 +1,100 @@
+@use "@angular/material" as mat;
+@import "../../../theme.scss";
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .timeline-header {
+    background: mat.get-theme-color($theme, primary, 50);
+    align-items: center;
+    padding: 16px;
+  }
+
+  .timeline-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .timeline-weekdays,
+    .timeline-categories {
+      display: grid;
+    }
+
+    .timeline-weekdays {
+      span {
+        text-align: center;
+        padding: 16px;
+      }
+    }
+
+    .timeline-categories {
+      border-top: 1px solid mat.get-theme-color($theme, primary, 200);
+      flex-grow: 1;
+      overflow-y: auto;
+      .timeline-cell {
+        border-bottom: 1px solid mat.get-theme-color($theme, primary, 200);
+        border-right: 1px solid mat.get-theme-color($theme, primary, 200);
+      }
+      .timeline-cell--category {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: mat.get-theme-color($theme, primary, 700);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1001px) {
+  .timeline-header {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .timeline-content {
+    overflow: hidden;
+
+    .timeline-weekdays,
+    .timeline-categories {
+      grid-template-columns: minmax(0, 0.5fr) repeat(5, minmax(0, 1fr));
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .timeline-content {
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    .timeline-weekdays,
+    .timeline-categories {
+      grid-template-columns: 100px repeat(5, 190px);
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .timeline-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px;
+  }
+}
+
+@media screen and (max-height: 800px) {
+  .timeline-categories {
+    .timeline-cell {
+      height: 210px;
+    }
+  }
+}
