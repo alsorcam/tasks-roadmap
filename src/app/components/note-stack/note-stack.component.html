@@ -1,0 +1,13 @@
+<div class="note-stack">
+  @for (note of notes; track note; let index = $index) {
+  <app-note
+    [style]="{ width: getNoteWidth(note) + '%' }"
+    [noteId]="note.id"
+    [title]="note.title"
+    [summary]="note.summary"
+    [startDate]="note.startDate"
+    [endDate]="note.endDate"
+    (click)="handleSelection(note)"
+  ></app-note>
+  }
+</div>

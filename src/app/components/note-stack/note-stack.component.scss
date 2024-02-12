@@ -1,0 +1,34 @@
+@use "@angular/material" as mat;
+
+.note-stack {
+  position: relative;
+}
+@for $i from 1 through 3 {
+  app-note:nth-child(#{$i}n) {
+    z-index: 3 - $i;
+    position: absolute;
+
+    &:hover {
+      cursor: pointer;
+      z-index: 5;
+    }
+  }
+}
+
+@media screen and (max-width: 1380px) {
+  @for $i from 1 through 3 {
+    app-note:nth-child(#{$i}n) {
+      left: $i * 8px;
+      top: $i * 8px;
+    }
+  }
+}
+
+@media screen and (min-width: 1381px) {
+  @for $i from 1 through 3 {
+    app-note:nth-child(#{$i}n) {
+      left: $i * 12px;
+      top: $i * 12px;
+    }
+  }
+}
