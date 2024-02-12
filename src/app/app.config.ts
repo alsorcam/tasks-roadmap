@@ -5,6 +5,7 @@ import { provideRouter } from '@angular/router';
 import { de } from 'date-fns/locale';
 import { DateFnsConfigurationService } from 'ngx-date-fns';
 
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { routes } from './app.routes';
 
 const dateConfig = new DateFnsConfigurationService();
@@ -16,5 +17,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     { provide: DateFnsConfigurationService, useValue: dateConfig },
     importProvidersFrom(HttpClientModule),
+    { provide: MAT_DATE_LOCALE, useValue: 'de-DE' },
   ],
 };

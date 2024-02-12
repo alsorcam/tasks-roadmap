@@ -24,7 +24,10 @@
       </div>
       @for (day of weekDays; track day) {
       <div class="timeline-cell">
-        <app-note-stack [notes]="getNotes(day, category.id)"></app-note-stack>
+        <app-note-stack
+          [notes]="getNotes(day, category.id)"
+          (noteSelected)="handleNoteSelected($event)"
+        ></app-note-stack>
       </div>
       } } }
     </div>

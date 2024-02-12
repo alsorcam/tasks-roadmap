@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { Subscription } from 'rxjs';
 import { NoteService } from '../../services/note.service';
@@ -7,6 +8,7 @@ import { Note, NoteLabel } from '../../types/note';
 import { WeekDateRange } from '../../types/week';
 import { DateUtil } from '../../utils/date.util';
 import { LabelSelectorComponent } from '../label-selector/label-selector.component';
+import { NoteEdit, NoteEditComponent } from '../note-edit/note-edit.component';
 import { NoteStackComponent } from '../note-stack/note-stack.component';
 import { WeekSelectorComponent } from '../week-selector/week-selector.component';
 
@@ -35,7 +37,7 @@ export class TimelineComponent implements OnInit, OnDestroy {
   private sub = new Subscription();
   private MAX_NOTE_STACK = 3;
 
-  constructor(private noteService: NoteService) {}
+  constructor(private noteService: NoteService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.sub.add(
@@ -83,5 +85,15 @@ export class TimelineComponent implements OnInit, OnDestroy {
         );
       })
       .slice(0, this.MAX_NOTE_STACK);
+  }
+
+  handleNoteSelected(event: Note) {
+    const dialogRef = this.dialog.open(NoteEditComponent, {
+      data: event,
+    });
+
+    dialogRef.afterClosed().subscribe((result: NoteEdit) => {
+      // TODO: Submit update
+    });
   }
 }
