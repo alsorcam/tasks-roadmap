@@ -1,4 +1,5 @@
 import {
+  addDays,
   differenceInBusinessDays,
   endOfWeek,
   getWeek,
@@ -39,5 +40,9 @@ export class DateUtil {
       0,
       0
     );
+  }
+
+  static addDays(date: Date, duration: number): Date {
+    return addDays(date, duration);
   }
 }

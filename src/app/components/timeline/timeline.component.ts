@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { Subscription } from 'rxjs';
+
 import { NoteService } from '../../services/note.service';
 import { Note, NoteLabel } from '../../types/note';
 import { WeekDateRange } from '../../types/week';
@@ -93,7 +94,24 @@ export class TimelineComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe((result: NoteEdit) => {
-      // TODO: Submit update
+      const updatedNote: Note = {
+        id: event.id,
+        startDate: result.startDate.getTime(),
+        endDate: DateUtil.addDays(result.startDate, result.duration).getTime(),
+        labels: event.labels,
+        title: result.title,
+        summary: result.summary,
+      };
+      this.sub.add(
+        this.noteService.updateNote(updatedNote).subscribe(() => {
+          const noteIdx = this.notes.findIndex(
+            (note) => note.id === updatedNote.id
+          );
+          if (noteIdx > -1) {
+            this.notes.splice(noteIdx, 1, updatedNote);
+          }
+        })
+      );
     });
   }
 }
