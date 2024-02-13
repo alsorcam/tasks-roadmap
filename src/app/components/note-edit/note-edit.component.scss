@@ -1,3 +1,14 @@
+.mdc-dialog__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  &::before {
+    display: none;
+  }
+}
+
 mat-dialog-content {
   display: flex;
   flex-direction: column;

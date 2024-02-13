@@ -1,5 +1,15 @@
-<h2 mat-dialog-title>Edit note {{ data.id }}</h2>
 @if(note !== undefined) {
+<div mat-dialog-title>
+  <h2>Edit note {{ data.id }}</h2>
+  <button
+    mat-icon-button
+    color="warn"
+    aria-label="Delete note"
+    [mat-dialog-close]="data.id"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
 <mat-dialog-content>
   <mat-form-field>
     <mat-label>Title</mat-label>

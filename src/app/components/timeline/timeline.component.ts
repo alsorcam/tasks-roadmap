@@ -93,25 +93,35 @@ export class TimelineComponent implements OnInit, OnDestroy {
       data: event,
     });
 
-    dialogRef.afterClosed().subscribe((result: NoteEdit) => {
-      const updatedNote: Note = {
-        id: event.id,
-        startDate: result.startDate.getTime(),
-        endDate: DateUtil.addDays(result.startDate, result.duration).getTime(),
-        labels: event.labels,
-        title: result.title,
-        summary: result.summary,
-      };
-      this.sub.add(
-        this.noteService.updateNote(updatedNote).subscribe(() => {
-          const noteIdx = this.notes.findIndex(
-            (note) => note.id === updatedNote.id
-          );
-          if (noteIdx > -1) {
-            this.notes.splice(noteIdx, 1, updatedNote);
-          }
-        })
-      );
+    dialogRef.afterClosed().subscribe((result: NoteEdit | number) => {
+      if (typeof result === 'number') {
+        // Delete note
+        const noteIdx = this.notes.findIndex((note) => note.id === result);
+        this.notes.splice(noteIdx, 1);
+      } else if (result !== undefined) {
+        // Edit note
+        const updatedNote: Note = {
+          id: event.id,
+          startDate: result.startDate.getTime(),
+          endDate: DateUtil.addDays(
+            result.startDate,
+            result.duration
+          ).getTime(),
+          labels: event.labels,
+          title: result.title,
+          summary: result.summary,
+        };
+        this.sub.add(
+          this.noteService.updateNote(updatedNote).subscribe(() => {
+            const noteIdx = this.notes.findIndex(
+              (note) => note.id === updatedNote.id
+            );
+            if (noteIdx > -1) {
+              this.notes.splice(noteIdx, 1, updatedNote);
+            }
+          })
+        );
+      }
     });
   }
 }
