@@ -1,6 +1,7 @@
 import { CommonModule, DatePipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, computed } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { DateUtil } from '../../utils/date.util';
 
 @Component({
   selector: 'app-note',
@@ -17,8 +18,8 @@ export class NoteComponent {
   @Input() endDate: number = new Date().getTime();
   @Input() labels: number[] = [];
 
-  startDateFormatted = new Date(this.startDate);
+  startDateFormatted = computed(() => new Date(this.startDate));
   get noteDuration(): number {
-    return Math.abs(this.endDate - this.startDate) / 86400000;
+    return DateUtil.daysInRange(this.startDate, this.endDate);
   }
 }
