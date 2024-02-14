@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Note } from '../../types/note';
-import { DateUtil } from '../../utils/date.util';
+import { Note } from '../../../types/note';
+import { DateUtil } from '../../../utils/date.util';
 import { NoteComponent } from '../note/note.component';
 
 @Component({

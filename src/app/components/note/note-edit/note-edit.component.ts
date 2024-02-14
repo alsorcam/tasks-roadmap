@@ -25,8 +25,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
-import { Note, NoteLabel } from '../../types/note';
-import { DateUtil } from '../../utils/date.util';
+import { Note, NoteLabel } from '../../../types/note';
+import { DateUtil } from '../../../utils/date.util';
 
 export interface NoteEdit {
   id: number;

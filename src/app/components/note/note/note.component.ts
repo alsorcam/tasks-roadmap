@@ -1,7 +1,7 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { Component, Input, computed } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { DateUtil } from '../../utils/date.util';
+import { DateUtil } from '../../../utils/date.util';
 
 @Component({
   selector: 'app-note',

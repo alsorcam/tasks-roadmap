@@ -9,8 +9,11 @@ import { Note, NoteLabel } from '../../types/note';
 import { WeekDateRange } from '../../types/week';
 import { DateUtil } from '../../utils/date.util';
 import { LabelSelectorComponent } from '../label-selector/label-selector.component';
-import { NoteEdit, NoteEditComponent } from '../note-edit/note-edit.component';
-import { NoteStackComponent } from '../note-stack/note-stack.component';
+import {
+  NoteEdit,
+  NoteEditComponent,
+} from '../note/note-edit/note-edit.component';
+import { NoteStackComponent } from '../note/note-stack/note-stack.component';
 import { WeekSelectorComponent } from '../week-selector/week-selector.component';
 
 @Component({
