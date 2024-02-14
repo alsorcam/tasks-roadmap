@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { Subscription } from 'rxjs';
 
 import { NoteService } from '../../../services/note.service';
@@ -22,6 +23,7 @@ import { WeekSelectorComponent } from '../week-selector/week-selector.component'
   imports: [
     CommonModule,
     MatGridListModule,
+    MatProgressSpinner,
     LabelSelectorComponent,
     WeekSelectorComponent,
     NoteStackComponent,
@@ -36,6 +38,7 @@ export class TimelineComponent implements OnInit, OnDestroy {
   weekDays: Date[] = new Array(5);
   selectedLabel = 0;
   firstNoteDate = new Date();
+  isLoading = true;
 
   private currentWeek?: WeekDateRange;
   private sub = new Subscription();
@@ -56,6 +59,7 @@ export class TimelineComponent implements OnInit, OnDestroy {
         this.firstNoteDate = new Date(
           Math.min(...this.notes.map((note) => note.startDate))
         );
+        this.isLoading = false;
       })
     );
   }

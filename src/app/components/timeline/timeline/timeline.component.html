@@ -1,3 +1,4 @@
+@defer (when !isLoading){
 <div class="timeline">
   <div class="timeline-header">
     <app-label-selector
@@ -33,3 +34,9 @@
     </div>
   </div>
 </div>
+} @placeholder (minimum 500ms) {
+<div class="timeline--loading">
+  <span>Loading roadmap...</span>
+  <mat-spinner color="accent" diameter="60"></mat-spinner>
+</div>
+}

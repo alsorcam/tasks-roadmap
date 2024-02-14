@@ -48,6 +48,19 @@
   }
 }
 
+.timeline--loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 16px;
+
+  span {
+    font: mat.get-theme-typography($theme, headline-5);
+  }
+}
+
 @media screen and (min-width: 1001px) {
   .timeline-header {
     display: grid;
