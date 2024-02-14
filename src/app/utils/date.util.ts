@@ -3,6 +3,7 @@ import {
   differenceInBusinessDays,
   endOfWeek,
   getWeek,
+  isWeekend,
   startOfWeek,
   sub,
 } from 'date-fns';
@@ -44,5 +45,9 @@ export class DateUtil {
 
   static addDays(date: Date, duration: number): Date {
     return addDays(date, duration);
+  }
+
+  static isWeekend(dateTimestamp: number): boolean {
+    return isWeekend(new Date(dateTimestamp));
   }
 }
