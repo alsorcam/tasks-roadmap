@@ -2,7 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
-import { TimelineComponent } from './components/timeline/timeline.component';
+import { TimelineComponent } from './components/timeline/timeline/timeline.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {

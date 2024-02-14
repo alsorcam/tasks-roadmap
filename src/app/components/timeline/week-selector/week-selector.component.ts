@@ -8,8 +8,8 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { WeekDateRange } from '../../types/week';
-import { DateUtil } from '../../utils/date.util';
+import { WeekDateRange } from '../../../types/week';
+import { DateUtil } from '../../../utils/date.util';
 
 @Component({
   selector: 'app-week-selector',

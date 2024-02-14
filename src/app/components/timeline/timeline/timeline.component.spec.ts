@@ -4,8 +4,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
+import { NoteStackComponent } from '../../note/note-stack/note-stack.component';
 import { LabelSelectorComponent } from '../label-selector/label-selector.component';
-import { NoteStackComponent } from '../note/note-stack/note-stack.component';
 import { WeekSelectorComponent } from '../week-selector/week-selector.component';
 import { TimelineComponent } from './timeline.component';
 

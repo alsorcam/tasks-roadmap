@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterOutlet } from '@angular/router';
-import { TimelineComponent } from './components/timeline/timeline.component';
+import { TimelineComponent } from './components/timeline/timeline/timeline.component';
 
 @Component({
   selector: 'app-root',

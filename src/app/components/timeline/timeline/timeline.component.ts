@@ -4,16 +4,16 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { Subscription } from 'rxjs';
 
-import { NoteService } from '../../services/note.service';
-import { Note, NoteLabel } from '../../types/note';
-import { WeekDateRange } from '../../types/week';
-import { DateUtil } from '../../utils/date.util';
-import { LabelSelectorComponent } from '../label-selector/label-selector.component';
+import { NoteService } from '../../../services/note.service';
+import { Note, NoteLabel } from '../../../types/note';
+import { WeekDateRange } from '../../../types/week';
+import { DateUtil } from '../../../utils/date.util';
 import {
   NoteEdit,
   NoteEditComponent,
-} from '../note/note-edit/note-edit.component';
-import { NoteStackComponent } from '../note/note-stack/note-stack.component';
+} from '../../note/note-edit/note-edit.component';
+import { NoteStackComponent } from '../../note/note-stack/note-stack.component';
+import { LabelSelectorComponent } from '../label-selector/label-selector.component';
 import { WeekSelectorComponent } from '../week-selector/week-selector.component';
 
 @Component({

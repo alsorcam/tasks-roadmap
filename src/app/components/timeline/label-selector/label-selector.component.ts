@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { NoteLabel } from '../../types/note';
+import { NoteLabel } from '../../../types/note';
 
 @Component({
   selector: 'app-label-selector',
