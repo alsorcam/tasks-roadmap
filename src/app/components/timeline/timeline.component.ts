@@ -90,7 +90,7 @@ export class TimelineComponent implements OnInit, OnDestroy {
 
   handleNoteSelected(event: Note) {
     const dialogRef = this.dialog.open(NoteEditComponent, {
-      data: event,
+      data: { note: event, labels: this.labels },
     });
 
     dialogRef.afterClosed().subscribe((result: NoteEdit | number) => {
