@@ -26,8 +26,8 @@ describe('NoteEditComponent', () => {
   const note: Note = {
     id: 1,
     title: 'Note title',
-    startDate: new Date().getTime(),
-    endDate: new Date().getTime(),
+    startDate: new Date(),
+    endDate: new Date(),
     labels: [],
   };
 

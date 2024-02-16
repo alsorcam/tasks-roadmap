@@ -14,12 +14,11 @@ export class NoteComponent {
   @Input() noteId: number = 0;
   @Input() title: string = '';
   @Input() summary?: string;
-  @Input() startDate: number = new Date().getTime();
-  @Input() endDate: number = new Date().getTime();
+  @Input() startDate: Date = new Date();
+  @Input() endDate: Date = new Date();
   @Input() labels: number[] = [];
 
-  startDateFormatted = computed(() => new Date(this.startDate));
-  get noteDuration(): number {
-    return DateUtil.daysInRange(this.startDate, this.endDate);
-  }
+  noteDuration = computed(() =>
+    DateUtil.daysInRange(this.startDate, this.endDate)
+  );
 }

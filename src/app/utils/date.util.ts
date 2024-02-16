@@ -2,8 +2,11 @@ import {
   addDays,
   differenceInBusinessDays,
   endOfWeek,
+  fromUnixTime,
+  getUnixTime,
   getWeek,
   isWeekend,
+  min,
   startOfWeek,
   sub,
 } from 'date-fns';
@@ -21,14 +24,8 @@ export class DateUtil {
     };
   }
 
-  static daysInRange(
-    startDateTimestamp: number,
-    endDateTimestamp: number
-  ): number {
-    return differenceInBusinessDays(
-      new Date(endDateTimestamp),
-      new Date(startDateTimestamp)
-    );
+  static daysInRange(startDate: Date, endDate: Date): number {
+    return differenceInBusinessDays(endDate, startDate) + 1;
   }
 
   static resetHour(date: Date): Date {
@@ -47,7 +44,19 @@ export class DateUtil {
     return addDays(date, duration);
   }
 
-  static isWeekend(dateTimestamp: number): boolean {
-    return isWeekend(new Date(dateTimestamp));
+  static isWeekend(date: Date): boolean {
+    return isWeekend(date);
+  }
+
+  static getDateFromUnix(unixTimestamp: number): Date {
+    return fromUnixTime(unixTimestamp);
+  }
+
+  static getUnixTime(date: Date): number {
+    return getUnixTime(date);
+  }
+
+  static earliestDate(dates: Date[]): Date {
+    return min(dates);
   }
 }

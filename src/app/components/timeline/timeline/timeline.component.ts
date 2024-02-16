@@ -56,8 +56,8 @@ export class TimelineComponent implements OnInit, OnDestroy {
       this.noteService.getNotes().subscribe((res) => {
         // Filter out notes that start on the weekend
         this.notes = res.filter((note) => !DateUtil.isWeekend(note.startDate));
-        this.firstNoteDate = new Date(
-          Math.min(...this.notes.map((note) => note.startDate))
+        this.firstNoteDate = DateUtil.earliestDate(
+          this.notes.map((note) => note.startDate)
         );
         this.isLoading = false;
       })
@@ -110,11 +110,8 @@ export class TimelineComponent implements OnInit, OnDestroy {
         // Edit note
         const updatedNote: Note = {
           id: event.id,
-          startDate: result.startDate.getTime(),
-          endDate: DateUtil.addDays(
-            result.startDate,
-            result.duration
-          ).getTime(),
+          startDate: result.startDate,
+          endDate: DateUtil.addDays(result.startDate, result.duration),
           labels: event.labels,
           title: result.title,
           summary: result.summary,

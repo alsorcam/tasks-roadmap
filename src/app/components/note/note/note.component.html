@@ -7,11 +7,13 @@
   </mat-card-header>
   @if (summary !== undefined) {
   <mat-card-content>
-    <p [ngClass]="{ 'card-summary--clamp': noteDuration < 2 }">{{ summary }}</p>
+    <p [ngClass]="{ 'card-summary--clamp': noteDuration() < 2 }">
+      {{ summary }}
+    </p>
   </mat-card-content>
   }
   <mat-card-footer>
-    <p>Start date: {{ startDateFormatted() | date : "dd.MM" }}</p>
-    <p>Duration: {{ noteDuration }} days</p>
+    <p>Start date: {{ startDate | date : "dd.MM" }}</p>
+    <p>Duration: {{ noteDuration() }} days</p>
   </mat-card-footer>
 </mat-card>

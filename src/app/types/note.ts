@@ -3,8 +3,8 @@ export interface Note {
   title: string;
   summary?: string;
   labels: number[];
-  startDate: number; // Timestamp
-  endDate: number; // Timestamp
+  startDate: Date;
+  endDate: Date;
 }
 
 export interface NoteLabel {

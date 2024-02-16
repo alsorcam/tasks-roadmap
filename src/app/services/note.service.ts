@@ -3,6 +3,16 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Note, NoteLabel } from '../types/note';
+import { DateUtil } from '../utils/date.util';
+
+interface NoteDTO {
+  id: number;
+  title: string;
+  summary?: string;
+  labels: number[];
+  startDate: number; // Timestamp
+  endDate: number; // Timestamp
+}
 
 @Injectable()
 export class NoteService {
@@ -15,22 +25,34 @@ export class NoteService {
   }
 
   getNotes(): Observable<Note[]> {
-    return this.http
-      .get(`${environment.apiUrl}notes`)
-      .pipe(map((res) => res as Note[]));
+    return this.http.get(`${environment.apiUrl}notes`).pipe(
+      map((res) =>
+        (res as NoteDTO[]).map((note) => ({
+          ...note,
+          startDate: DateUtil.getDateFromUnix(note.startDate),
+          endDate: DateUtil.getDateFromUnix(note.endDate),
+        }))
+      )
+    );
   }
 
   updateNote(note: Note): Observable<Note> {
-    return this.http.put(`${environment.apiUrl}notes/${note.id}`, note).pipe(
-      map((res) => res as Note),
-      catchError(() =>
-        throwError(
-          () =>
-            ({
-              message: `Something went wrong while updating note ${note.id}. Please, try again.`,
-            } as HttpErrorResponse)
+    return this.http
+      .put(`${environment.apiUrl}notes/${note.id}`, {
+        ...note,
+        startDate: DateUtil.getUnixTime(note.startDate),
+        endDate: DateUtil.getUnixTime(note.endDate),
+      } as NoteDTO)
+      .pipe(
+        map((res) => res as Note),
+        catchError(() =>
+          throwError(
+            () =>
+              ({
+                message: `Something went wrong while updating note ${note.id}. Please, try again.`,
+              } as HttpErrorResponse)
+          )
         )
-      )
-    );
+      );
   }
 }
