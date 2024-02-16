@@ -4,7 +4,7 @@
 mat-card.note {
   @include mat.elevation-transition();
   @include mat.elevation(0);
-  border: 1px solid mat.get-theme-color($theme, accent, 500);
+  border: 2px solid mat.get-theme-color($theme, accent, 500);
 
   mat-card-header {
     .mat-mdc-card-title-group {
