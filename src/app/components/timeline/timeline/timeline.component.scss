@@ -30,12 +30,12 @@
     }
 
     .timeline-categories {
-      border-top: 1px solid mat.get-theme-color($theme, primary, 200);
+      border-top: 1px solid mat.get-color-from-palette($grey, 400);
       flex-grow: 1;
       overflow-y: auto;
       .timeline-cell {
-        border-bottom: 1px solid mat.get-theme-color($theme, primary, 200);
-        border-right: 1px solid mat.get-theme-color($theme, primary, 200);
+        border-bottom: 1px solid mat.get-color-from-palette($grey, 400);
+        border-right: 1px solid mat.get-color-from-palette($grey, 400);
       }
       .timeline-cell--category {
         display: flex;
