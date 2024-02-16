@@ -5,8 +5,10 @@ import {
   fromUnixTime,
   getUnixTime,
   getWeek,
+  isAfter,
   isWeekend,
   min,
+  setDay,
   startOfWeek,
   sub,
 } from 'date-fns';
@@ -22,6 +24,10 @@ export class DateUtil {
       startDate: startOfWeek(date, { weekStartsOn: 1 }),
       endDate: sub(endOfWeek(date, { weekStartsOn: 1 }), { days: 2 }),
     };
+  }
+
+  static setDayOfWeek(date: Date, dayOfWeek: number): Date {
+    return setDay(date, dayOfWeek, { weekStartsOn: 1 });
   }
 
   static daysInRange(startDate: Date, endDate: Date): number {
@@ -46,6 +52,14 @@ export class DateUtil {
 
   static isWeekend(date: Date): boolean {
     return isWeekend(date);
+  }
+
+  static endsAfterWeekend(startDate: Date, endDate: Date): boolean {
+    const weekSunday = endOfWeek(startDate, { weekStartsOn: 1 });
+    const weekFriday = sub(endOfWeek(startDate, { weekStartsOn: 1 }), {
+      days: 2,
+    });
+    return this.isWeekend(endDate) || isAfter(endDate, weekSunday);
   }
 
   static getDateFromUnix(unixTimestamp: number): Date {

@@ -27,11 +27,22 @@ export class NoteService {
   getNotes(): Observable<Note[]> {
     return this.http.get(`${environment.apiUrl}notes`).pipe(
       map((res) =>
-        (res as NoteDTO[]).map((note) => ({
-          ...note,
-          startDate: DateUtil.getDateFromUnix(note.startDate),
-          endDate: DateUtil.getDateFromUnix(note.endDate),
-        }))
+        (res as NoteDTO[])
+          .map((note) => {
+            // Don't take into account weekends for end dates
+            const startDate = DateUtil.getDateFromUnix(note.startDate);
+            const endDate = DateUtil.getDateFromUnix(note.endDate);
+            const updatedEndDate = DateUtil.endsAfterWeekend(startDate, endDate)
+              ? DateUtil.setDayOfWeek(startDate, 5)
+              : endDate;
+            return {
+              ...note,
+              startDate: startDate,
+              endDate: updatedEndDate,
+            };
+          })
+          // Filter out notes that start on the weekend
+          .filter((note) => !DateUtil.isWeekend(note.startDate))
       )
     );
   }
