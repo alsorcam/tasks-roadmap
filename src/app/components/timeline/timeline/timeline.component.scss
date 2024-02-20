@@ -32,7 +32,6 @@
     .timeline-categories {
       border-top: 1px solid mat.get-color-from-palette($grey, 400);
       flex-grow: 1;
-      overflow-y: auto;
       .timeline-cell {
         border-bottom: 1px solid mat.get-color-from-palette($grey, 400);
         border-right: 1px solid mat.get-color-from-palette($grey, 400);
@@ -85,7 +84,6 @@
 
   .timeline-content {
     overflow-x: scroll;
-    overflow-y: hidden;
 
     .timeline-weekdays,
     .timeline-categories {
