@@ -87,7 +87,8 @@ export class TimelineComponent implements OnInit, OnDestroy {
     return this.notes
       .filter((note) => {
         return (
-          note.labels.includes(category) &&
+          // WARNING: Category cast to number for mock server
+          note.labels.includes(+category) &&
           DateUtil.resetHour(note.startDate).getTime() ===
             DateUtil.resetHour(date).getTime()
         );

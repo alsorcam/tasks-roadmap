@@ -50,9 +50,20 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true
+            },
+            "mock": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "./src/environments/environment.ts",
+                  "with": "./src/environments/environment.mock.ts"
+                }
+              ]
             }
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -62,6 +73,9 @@
             },
             "development": {
               "buildTarget": "tasks-roadmap:build:development"
+            },
+            "mock": {
+              "buildTarget": "tasks-roadmap:build:mock"
             }
           },
           "defaultConfiguration": "development"

@@ -16,7 +16,13 @@ The application is composed of folders that have common functionality or purpose
 
 ### Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To be able to load anything, the `apiUrl` in the `environment.ts` file should be updated to fetch the needed data.
+
+### Mock server
+
+Run `npm run mock-server` to run the mock server that will return the data provided in the `mock/db.json` file. The mock server will be running in the :3000 port (`http://localhost:3000`).
+Run `npm run start:mock` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ### Code scaffolding
 
