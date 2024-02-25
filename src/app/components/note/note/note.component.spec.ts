@@ -15,6 +15,12 @@ describe('NoteComponent', () => {
 
     fixture = TestBed.createComponent(NoteComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('noteId', 1);
+    fixture.componentRef.setInput('title', '');
+    fixture.componentRef.setInput('summary', undefined);
+    fixture.componentRef.setInput('startDate', new Date());
+    fixture.componentRef.setInput('endDate', new Date());
+    fixture.componentRef.setInput('duration', 1);
     fixture.detectChanges();
   });
 

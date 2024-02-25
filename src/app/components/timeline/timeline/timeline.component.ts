@@ -34,12 +34,12 @@ import { WeekSelectorComponent } from '../week-selector/week-selector.component'
 })
 export class TimelineComponent implements OnInit, OnDestroy {
   labels: NoteLabel[] = [];
-  notes: Note[] = [];
   weekDays: Date[] = new Array(5);
   selectedLabel = 0;
   firstNoteDate = new Date();
   isLoading = true;
 
+  private notes: Note[] = [];
   private currentWeek?: WeekDateRange;
   private sub = new Subscription();
   private MAX_NOTE_STACK = 3;
@@ -88,7 +88,7 @@ export class TimelineComponent implements OnInit, OnDestroy {
       .filter((note) => {
         return (
           note.labels.includes(category) &&
-          DateUtil.resetHour(new Date(note.startDate)).getTime() ===
+          DateUtil.resetHour(note.startDate).getTime() ===
             DateUtil.resetHour(date).getTime()
         );
       })

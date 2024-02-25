@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -18,17 +12,17 @@ import { DateUtil } from '../../../utils/date.util';
   templateUrl: './week-selector.component.html',
   styleUrl: './week-selector.component.scss',
 })
-export class WeekSelectorComponent implements OnChanges {
-  @Input() startDate = new Date();
+export class WeekSelectorComponent implements OnInit {
+  startDate = input<Date>(new Date());
   @Output() weekChange = new EventEmitter<WeekDateRange>();
 
-  private weekRange = DateUtil.getWeekDateRange(this.startDate);
+  private weekRange = DateUtil.getWeekDateRange(this.startDate());
   get currentWeek(): number {
     return DateUtil.getWeekNumber(this.weekRange.startDate);
   }
 
-  ngOnChanges(): void {
-    this.setWeek(this.startDate);
+  ngOnInit(): void {
+    this.setWeek(this.startDate());
   }
 
   handleNext(): void {

@@ -1,5 +1,5 @@
 import { CommonModule, DatePipe } from '@angular/common';
-import { Component, Input, computed } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { DateUtil } from '../../../utils/date.util';
 
@@ -11,14 +11,13 @@ import { DateUtil } from '../../../utils/date.util';
   styleUrl: './note.component.scss',
 })
 export class NoteComponent {
-  @Input() noteId: number = 0;
-  @Input() title: string = '';
-  @Input() summary?: string;
-  @Input() startDate: Date = new Date();
-  @Input() endDate: Date = new Date();
-  @Input() labels: number[] = [];
+  noteId = input.required<number>();
+  title = input.required<string>();
+  summary = input.required<string | undefined>();
+  startDate = input.required<Date>();
+  endDate = input.required<Date>();
 
   noteDuration = computed(() =>
-    DateUtil.daysInRange(this.startDate, this.endDate)
+    DateUtil.daysInRange(this.startDate(), this.endDate())
   );
 }

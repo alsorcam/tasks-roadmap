@@ -17,6 +17,7 @@ describe('LabelSelectorComponent', () => {
 
     fixture = TestBed.createComponent(LabelSelectorComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('labels', []);
     fixture.detectChanges();
   });
 

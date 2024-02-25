@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output, input } from '@angular/core';
 import { Note } from '../../../types/note';
 import { DateUtil } from '../../../utils/date.util';
 import { NoteComponent } from '../note/note.component';
@@ -11,7 +11,7 @@ import { NoteComponent } from '../note/note.component';
   styleUrl: './note-stack.component.scss',
 })
 export class NoteStackComponent {
-  @Input() notes: Note[] = [];
+  notes = input.required<Note[]>();
   @Output() noteSelected = new EventEmitter<Note>();
 
   handleSelection(note: Note): void {

@@ -14,6 +14,7 @@ describe('NoteStackComponent', () => {
 
     fixture = TestBed.createComponent(NoteStackComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('notes', []);
     fixture.detectChanges();
   });
 
