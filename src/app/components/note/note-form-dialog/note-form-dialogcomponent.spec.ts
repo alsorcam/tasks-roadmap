@@ -13,11 +13,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { Note, NoteLabel } from '../../../types/note';
-import { NoteEditComponent } from './note-edit.component';
+import { NoteFormDialog } from './note-form-dialog.component';
 
-describe('NoteEditComponent', () => {
-  let component: NoteEditComponent;
-  let fixture: ComponentFixture<NoteEditComponent>;
+describe('NoteFormDialog', () => {
+  let component: NoteFormDialog;
+  let fixture: ComponentFixture<NoteFormDialog>;
 
   const labels: NoteLabel[] = [
     { id: 1, text: 'Label 1' },
@@ -34,7 +34,7 @@ describe('NoteEditComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        NoteEditComponent,
+        NoteFormDialog,
         MatDialogModule,
         MatFormFieldModule,
         MatIconModule,
@@ -57,7 +57,7 @@ describe('NoteEditComponent', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(NoteEditComponent);
+    fixture = TestBed.createComponent(NoteFormDialog);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

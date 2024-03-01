@@ -28,7 +28,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Note, NoteLabel } from '../../../types/note';
 import { DateUtil } from '../../../utils/date.util';
 
-export interface NoteEdit {
+export interface NoteForm {
   id: number;
   title: string;
   summary?: string;
@@ -37,13 +37,13 @@ export interface NoteEdit {
   labels: number[];
 }
 
-export interface NoteEditDialogData {
+export interface NoteFormDialogData {
   note: Note;
   labels: NoteLabel[];
 }
 
 @Component({
-  selector: 'app-note-edit',
+  selector: 'app-note-form-dialog',
   standalone: true,
   imports: [
     MatDialogModule,
@@ -57,10 +57,10 @@ export interface NoteEditDialogData {
     ReactiveFormsModule,
   ],
   providers: [provideNativeDateAdapter()],
-  templateUrl: './note-edit.component.html',
-  styleUrl: './note-edit.component.scss',
+  templateUrl: './note-form-dialog.component.html',
+  styleUrl: './note-form-dialog.component.scss',
 })
-export class NoteEditComponent implements OnInit {
+export class NoteFormDialog implements OnInit {
   form?: FormGroup;
   labels: NoteLabel[] = [];
   noteId?: number;
@@ -77,9 +77,9 @@ export class NoteEditComponent implements OnInit {
   }));
 
   constructor(
-    public dialogRef: MatDialogRef<NoteEditComponent>,
+    public dialogRef: MatDialogRef<NoteFormDialog>,
     private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: NoteEditDialogData
+    @Inject(MAT_DIALOG_DATA) public data: NoteFormDialogData
   ) {
     this.noteId = data.note.id;
     this.labels = data.labels;

@@ -10,9 +10,9 @@ import { Note, NoteLabel } from '../../../types/note';
 import { WeekDateRange } from '../../../types/week';
 import { DateUtil } from '../../../utils/date.util';
 import {
-  NoteEdit,
-  NoteEditComponent,
-} from '../../note/note-edit/note-edit.component';
+  NoteForm,
+  NoteFormDialog,
+} from '../../note/note-form-dialog/note-form-dialog.component';
 import { NoteStackComponent } from '../../note/note-stack/note-stack.component';
 import { LabelSelectorComponent } from '../label-selector/label-selector.component';
 import { WeekSelectorComponent } from '../week-selector/week-selector.component';
@@ -97,11 +97,11 @@ export class TimelineComponent implements OnInit, OnDestroy {
   }
 
   handleNoteSelected(event: Note) {
-    const dialogRef = this.dialog.open(NoteEditComponent, {
+    const dialogRef = this.dialog.open(NoteFormDialog, {
       data: { note: event, labels: this.labels },
     });
 
-    dialogRef.afterClosed().subscribe((result: NoteEdit | number) => {
+    dialogRef.afterClosed().subscribe((result: NoteForm | number) => {
       if (typeof result === 'number') {
         // Delete note
         const noteIdx = this.notes.findIndex((note) => note.id === result);
