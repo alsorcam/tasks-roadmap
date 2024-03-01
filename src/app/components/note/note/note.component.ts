@@ -1,7 +1,6 @@
 import { CommonModule, DatePipe } from '@angular/common';
-import { Component, computed, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { DateUtil } from '../../../utils/date.util';
 
 @Component({
   selector: 'app-note',
@@ -16,8 +15,5 @@ export class NoteComponent {
   summary = input.required<string | undefined>();
   startDate = input.required<Date>();
   endDate = input.required<Date>();
-
-  noteDuration = computed(() =>
-    DateUtil.daysInRange(this.startDate(), this.endDate())
-  );
+  duration = input.required<number>();
 }
