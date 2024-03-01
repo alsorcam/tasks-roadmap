@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { Subscription } from 'rxjs';
 
 import { NoteService } from '../../../services/note.service';
@@ -15,6 +14,7 @@ import {
 } from '../../note/note-form-dialog/note-form-dialog.component';
 import { NoteStackComponent } from '../../note/note-stack/note-stack.component';
 import { LabelSelectorComponent } from '../label-selector/label-selector.component';
+import { LoadingTimelineComponent } from '../loading-timeline/loading-timeline.component';
 import { WeekSelectorComponent } from '../week-selector/week-selector.component';
 
 @Component({
@@ -23,10 +23,10 @@ import { WeekSelectorComponent } from '../week-selector/week-selector.component'
   imports: [
     CommonModule,
     MatGridListModule,
-    MatProgressSpinner,
     LabelSelectorComponent,
     WeekSelectorComponent,
     NoteStackComponent,
+    LoadingTimelineComponent,
   ],
   providers: [NoteService],
   templateUrl: './timeline.component.html',

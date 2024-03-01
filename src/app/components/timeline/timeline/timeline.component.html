@@ -34,9 +34,6 @@
     </div>
   </div>
 </div>
-} @placeholder (minimum 500ms) {
-<div class="timeline--loading">
-  <span>Loading roadmap...</span>
-  <mat-spinner color="accent" diameter="60"></mat-spinner>
-</div>
+} @loading (minimum 2s) {
+<app-loading-timeline></app-loading-timeline>
 }

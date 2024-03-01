@@ -1,0 +1,42 @@
+@use "@angular/material" as mat;
+@import "../../../../theme.scss";
+
+.timeline--loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  .loading-header {
+    height: 80px;
+    background: mat.get-color-from-palette($grey, 400);
+    width: 100%;
+  }
+
+  .loading-days {
+    height: 51px;
+    border-bottom: 1px solid mat.get-color-from-palette($grey, 400);
+  }
+
+  .loading-row {
+    flex-grow: 1;
+    display: flex;
+    border-bottom: 1px solid mat.get-color-from-palette($grey, 400);
+
+    .loading-cell {
+      border-right: 1px solid mat.get-color-from-palette($grey, 400);
+      flex-grow: 1;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
