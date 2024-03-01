@@ -18,7 +18,7 @@
       }
     </div>
     <div class="timeline-categories">
-      @for (category of labels; track category) { @if(category.id ===
+      @for (category of labels; track category.id) { @if(category.id ===
       this.selectedLabel || this.selectedLabel === 0) {
       <div class="timeline-cell timeline-cell--category">
         <span>{{ category.text }}</span>

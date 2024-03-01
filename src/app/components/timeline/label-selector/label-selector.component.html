@@ -2,7 +2,7 @@
   <mat-label>Labels</mat-label>
   <mat-select [(value)]="selected" (valueChange)="handleLabelChange()">
     <mat-option [value]="defaultItem.id">{{ defaultItem.text }}</mat-option>
-    @for (option of labels(); track option) {
+    @for (option of labels(); track option.id) {
     <mat-option [value]="option.id">{{ option.text }}</mat-option>
     }
   </mat-select>

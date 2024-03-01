@@ -1,5 +1,5 @@
 <div class="note-stack">
-  @for (note of notes(); track note; let index = $index) {
+  @for (note of notes(); track note.id; let index = $index) {
   <app-note
     [style]="{ width: getNoteWidth(note) + '%' }"
     [noteId]="note.id"

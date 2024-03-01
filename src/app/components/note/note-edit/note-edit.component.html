@@ -41,7 +41,7 @@
     </mat-form-field>
     <section [formGroup]="labelsFormGroup()">
       <mat-label>Labels</mat-label>
-      @for (label of labels; track label){
+      @for (label of labels; track label.id){
       <mat-checkbox [formControlName]="label.text">{{
         label.text
       }}</mat-checkbox>
