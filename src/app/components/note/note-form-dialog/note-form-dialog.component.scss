@@ -13,15 +13,42 @@ mat-dialog-content > form {
   display: flex;
   flex-direction: column;
   gap: 16px;
-
-  & > section {
-    display: flex;
-    flex-direction: column;
-  }
 }
 
 mat-dialog-actions {
   display: flex;
   justify-content: space-between;
   gap: 16px;
+}
+
+@media screen and (max-width: 429px) {
+  mat-dialog-content > form {
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    & > section > .form-row {
+      display: flex;
+      gap: 0;
+      flex-direction: column;
+    }
+  }
+}
+
+@media screen and (min-width: 430px) {
+  mat-dialog-content > form {
+    .form-row {
+      display: flex;
+      gap: 16px;
+      & > * {
+        flex-grow: 1;
+      }
+    }
+    & > section > .form-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+  }
 }
